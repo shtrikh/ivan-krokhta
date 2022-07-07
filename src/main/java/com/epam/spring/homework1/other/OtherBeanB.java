@@ -6,9 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OtherBeanB {
-    public OtherBeanB(){}
+    private OtherBeanB() {
+    }
+
     @Autowired
-    void setBeanB(BeanB beanB){
+    void setBeanB(BeanB beanB) {
         System.out.println(this.getClass().getSimpleName() + ". " + beanB.getClass().getSimpleName() + " was injected through the setter");
     }
 }

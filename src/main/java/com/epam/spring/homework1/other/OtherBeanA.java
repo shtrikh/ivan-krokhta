@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OtherBeanA {
     @Autowired
-    public OtherBeanA(BeanA beanA){
+    private OtherBeanA(BeanA beanA) {
         System.out.println((this.getClass().getSimpleName() + ". " + beanA.getClass().getSimpleName() + " was injected through the constructor"));
     }
 }
