@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Component
-public class BeanE extends BeanParent{
+public class BeanE extends BeanParent {
     private String name;
     private double value;
 
@@ -14,21 +14,13 @@ public class BeanE extends BeanParent{
         super(name, value);
     }
 
-    @Override
-    public String toString() {
-        return "BeanE{" +
-                "name='" + name + '\'' +
-                ", value=" + value +
-                '}';
-    }
-
     @PostConstruct
-    public void postConstructMethod(){
+    public void postConstructMethod() {
         System.out.println("BeanE postConstructMethod");
     }
 
     @PreDestroy
-    public void preDestroyMethod(){
+    public void preDestroyMethod() {
         System.out.println("BeanE preDestroyMethod");
     }
 }

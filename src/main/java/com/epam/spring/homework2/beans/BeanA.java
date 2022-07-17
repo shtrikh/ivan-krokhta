@@ -14,15 +14,6 @@ public class BeanA extends BeanParent implements InitializingBean, DisposableBea
     }
 
     @Override
-    public String toString() {
-        return "BeanA{" +
-                "name='" + name + '\'' +
-                ", value=" + value +
-                '}';
-    }
-
-
-    @Override
     public void destroy() throws Exception {
         System.out.println("BeanA destroy method");
     }

@@ -25,10 +25,9 @@ public class BeanParent {
         this.value = value;
     }
 
-
     @Override
     public String toString() {
-        return "BEAN{" +
+        return this.getClass().getSimpleName() +"{" +
                 "name='" + name + '\'' +
                 ", value='" + value + '\'' +
                 '}';

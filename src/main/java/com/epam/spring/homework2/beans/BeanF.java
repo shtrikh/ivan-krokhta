@@ -5,19 +5,11 @@ import org.springframework.stereotype.Component;
 
 @Lazy
 @Component
-public class BeanF extends BeanParent{
+public class BeanF extends BeanParent {
     private String name;
     private double value;
 
     public BeanF(String name, double value) {
         super(name, value);
-    }
-
-    @Override
-    public String toString() {
-        return "BeanF{" +
-                "name='" + name + '\'' +
-                ", value=" + value +
-                '}';
     }
 }

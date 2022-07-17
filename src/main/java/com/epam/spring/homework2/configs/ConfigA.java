@@ -12,34 +12,20 @@ import org.springframework.context.annotation.*;
 @ComponentScan("com.epam.spring.homework2.beans")
 public class ConfigA {
 
-    @Value("${bean.b.name}")
-    private String beanBName;
-    @Value("${bean.b.value}")
-    private double beanBValue;
-    @Value("${bean.c.name}")
-    private String beanCName;
-    @Value("${bean.c.value}")
-    private double beanCValue;
-    @Value("${bean.d.name}")
-    private String beanDName;
-    @Value("${bean.d.value}")
-    private double beanDValue;
-
     @Bean(initMethod = "customInitMethod", destroyMethod = "customDestroyMethod")
     @DependsOn("beanD")
-    public BeanB beanB(){
-        return new BeanB(beanBName, beanBValue);
+    public BeanB beanB(@Value("${bean.b.name}") String name, @Value("${bean.b.value}") double value) {
+        return new BeanB(name, value);
     }
 
     @Bean(initMethod = "customInitMethod", destroyMethod = "customDestroyMethod")
     @DependsOn("beanB")
-    public BeanC beanC(){
-        return new BeanC(beanCName, beanCValue);
+    public BeanC beanC(@Value("${bean.c.name}") String name, @Value("${bean.c.value}") double value) {
+        return new BeanC(name, value);
     }
 
     @Bean(initMethod = "customInitMethod", destroyMethod = "customDestroyMethod")
-    public BeanD beanD(){
-        return new BeanD(beanDName, beanDValue);
+    public BeanD beanD(@Value("${bean.d.name}") String name, @Value("${bean.d.value}") double value) {
+        return new BeanD(name, value);
     }
-
 }

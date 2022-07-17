@@ -8,11 +8,10 @@ import org.springframework.stereotype.Component;
 public class OtherBeanB implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if(bean instanceof BeanParent){
-            if(((BeanParent) bean).getName() != null && ((BeanParent) bean).getValue() >= 0 ){
-                System.out.println( ((BeanParent) bean).getName() + " is valid");
-            }
-            else {
+        if (bean instanceof BeanParent) {
+            if (((BeanParent) bean).getName() != null && ((BeanParent) bean).getValue() >= 0) {
+                System.out.println(((BeanParent) bean).getName() + " is valid");
+            } else {
                 System.out.println(((BeanParent) bean).getName() + " is invalid");
             }
         }
