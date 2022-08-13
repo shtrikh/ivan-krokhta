@@ -8,4 +8,5 @@ public interface OrderService {
     Page<OrderDto> findAll(Pageable pageable);
     OrderDto createOrder(OrderDto orderDto);
     OrderDto findById(Long id);
+    Page<OrderDto> findConfirmedOrders(Long userId,Pageable pageable);
 }

@@ -7,6 +7,7 @@ import org.example.internetshopspring.dto.UserDto;
 import org.example.internetshopspring.service.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,8 +18,9 @@ public class UserController implements UserApi {
     private final UserService userService;
 
     @Override
-    public Page<UserDto> findAll(int pageSize, int pageNumber) {
-        Page<UserDto> users = userService.findAll(PageRequest.of(pageNumber, pageSize));
+    public Page<UserDto> findAll(int pageSize, int pageNumber, String sortValue) {
+        Page<UserDto> users = userService.findAll(PageRequest.of(pageNumber, pageSize,
+                Sort.by(Sort.DEFAULT_DIRECTION, sortValue)));
         log.info("Users successfully selected");
         return users;
     }

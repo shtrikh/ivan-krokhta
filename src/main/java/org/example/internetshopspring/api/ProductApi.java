@@ -16,7 +16,8 @@ public interface ProductApi {
     @Operation(summary = "Find all")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    Page<ProductDto> findAll(@RequestParam("pageSize") int pageSize, @RequestParam("pageNumber") int pageNumber);
+    Page<ProductDto> findAll(@RequestParam("pageSize") int pageSize, @RequestParam("pageNumber") int pageNumber,
+                             @RequestParam("sortValue") String sortValue);
 
     @Operation(summary = "Create user")
     @ResponseStatus(HttpStatus.CREATED)

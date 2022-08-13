@@ -16,7 +16,8 @@ public interface OrderApi {
     @Operation(summary = "Find all")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    Page<OrderDto> findAll(@RequestParam("pageSize") int pageSize, @RequestParam("pageNumber") int pageNumber);
+    Page<OrderDto> findAll(@RequestParam("pageSize") int pageSize, @RequestParam("pageNumber") int pageNumber,
+                           @RequestParam("sortValue") String sortValue);
 
     @Operation(summary = "Create order")
     @ResponseStatus(HttpStatus.CREATED)
@@ -27,4 +28,11 @@ public interface OrderApi {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
     OrderDto findById(@PathVariable("id") Long id);
+
+    @Operation(summary = "Find confirmed")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/confirmed/{userId}")
+    Page<OrderDto> findConfirmedOrder(@PathVariable("userId") Long userId,
+                                      @RequestParam(value = "pageSize", defaultValue = "10") int pageSize,
+                                      @RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber);
 }

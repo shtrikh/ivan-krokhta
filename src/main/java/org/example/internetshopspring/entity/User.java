@@ -1,12 +1,14 @@
 package org.example.internetshopspring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.example.internetshopspring.enums.Role;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Builder
 @Getter
 @Setter
@@ -30,6 +32,7 @@ public class User {
     @Column(name = "surname")
     private String surname;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
 
@@ -38,4 +41,8 @@ public class User {
 
     @Column(name = "ban")
     private boolean ban;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    Set<Order> orders;
 }

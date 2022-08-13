@@ -6,7 +6,7 @@ import org.example.internetshopspring.enums.Status;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Builder
 @Getter
 @Setter
@@ -18,12 +18,15 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column(name = "product_id")
-    private Long productId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private Product product;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private Status status;
 }

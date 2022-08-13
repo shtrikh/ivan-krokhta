@@ -7,6 +7,7 @@ import org.example.internetshopspring.dto.ProductDto;
 import org.example.internetshopspring.service.ProductService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,8 +18,9 @@ public class ProductController implements ProductApi {
     private final ProductService productService;
 
     @Override
-    public Page<ProductDto> findAll(int pageSize, int pageNumber) {
-        Page<ProductDto> products = productService.findAll(PageRequest.of(pageNumber, pageSize));
+    public Page<ProductDto> findAll(int pageSize, int pageNumber, String sortValue) {
+        Page<ProductDto> products = productService.findAll(PageRequest.of(pageNumber, pageSize,
+                Sort.by(Sort.DEFAULT_DIRECTION, sortValue)));
         log.info("Products successfully selected");
         return products;
     }

@@ -3,6 +3,8 @@ package org.example.internetshopspring.dto;
 import lombok.*;
 import org.example.internetshopspring.dto.group.OnCreate;
 import org.example.internetshopspring.dto.group.OnUpdate;
+import org.example.internetshopspring.entity.Product;
+import org.example.internetshopspring.entity.User;
 import org.example.internetshopspring.enums.Status;
 
 import javax.validation.constraints.NotNull;
@@ -20,10 +22,10 @@ public class OrderDto {
     private Long id;
 
     @NotNull(groups = OnCreate.class)
-    private Long userId;
+    private User user;
 
     @NotNull(groups = OnCreate.class)
-    private Long productId;
+    private Product product;
 
     private Status status;
 }
